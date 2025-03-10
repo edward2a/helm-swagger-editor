@@ -1,0 +1,1 @@
+# helm-swagger-editor
