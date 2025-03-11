@@ -2,6 +2,10 @@ baseName: swagger-editor
 imageName: docker.io/swaggerapi/swagger-editor
 imageTag: next-v5-unprivileged
 
+limitCpu: 200m
+limitMemory: 512Mi
+
 enableIngressTls: false
 
 baseUrl: example.local
+
