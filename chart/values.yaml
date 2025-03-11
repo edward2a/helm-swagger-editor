@@ -1,0 +1,7 @@
+baseName: swagger-editor
+imageName: docker.io/swaggerapi/swagger-editor
+imageTag: next-v5-unprivileged
+
+enableIngressTls: false
+
+baseUrl: example.local

@@ -1,0 +1,4 @@
+---
+apiVersion: v2
+name: swagger-editor
+version: 0.0.1

@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.baseName }}
+  namespace: {{ .Values.namespace | default .Release.Namespace }}
+  labels:
+    app: {{ .Values.baseName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.baseName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.baseName }}
+    spec:
+      {{- if .Values.tolerations }}
+      tolerations:
+        {{ .Values.tolerations }}
+      {{- end }}
+      containers:
+      - name: {{ .Values.baseName }}
+        image: {{ .Values.imageName }}:{{ .Values.imageTag }}
+        imagePullPolicy: IfNotPresent
+        {{- if .Values.command }}
+        command: {{ toRawJson .Values.command }}
+        {{- end }}
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          limits:
+            cpu: {{ .Values.limitCpu }}
+            memory: {{ .Values.limitMemory }}
+...
